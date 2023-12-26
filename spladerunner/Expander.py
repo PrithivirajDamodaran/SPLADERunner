@@ -110,7 +110,12 @@ class Expander:
     
     def expand(self, request):
 
-        encoded_input = self.tokenizer.encode_batch(request)
+        if isinstance(request, str):
+            plain_input = [request]
+        else:
+            plain_input = request
+
+        encoded_input = self.tokenizer.encode_batch(plain_input)
         input_ids = np.array([e.ids for e in encoded_input])
         attention_mask = np.array([e.attention_mask for e in encoded_input])
 

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='SPLADERunner', 
-    version='0.0.1', 
+    version='0.0.2', 
     packages=find_packages(),
     install_requires=[
         'tokenizers',
@@ -20,7 +20,6 @@ setup(
     license='CC-BY-SA-4.0',
     classifiers=[
         'Programming Language :: Python :: 3',
-        'License :: Creative Commons Attribution-ShareAlike 4.0 International',
         'Operating System :: OS Independent',
     ],
     python_requires='>=3.6',
