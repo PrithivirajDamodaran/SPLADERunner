@@ -6,7 +6,7 @@ Ultra-lite &amp; Super-fast Python wrapper for the unofficial implementation of 
     - **No Torch or Transformers** needed. Runs on CPU.
     - Boasts the 
         - **tiniest document expander, ~8MB**.
-        - **< 50ms P90 inference time**
+        - **< 100ms inference time**
     
 2. 💡 **Why learn Sparse Representations?**:
 
@@ -48,7 +48,7 @@ from spladerunner import Expander
 exapander = Expander()
 
 #Sample Document expansion
-expander.expand("Chronic Obstructive Pulmonary Disease (COPD) presents a complex interplay of respiratory and cardiovascular comorbidities, necessitating multidisciplinary management.")
+sparse_rep = expander.expand("Chronic Obstructive Pulmonary Disease (COPD) presents a complex interplay of respiratory and cardiovascular comorbidities, necessitating multidisciplinary management.")
 ```
 
 
