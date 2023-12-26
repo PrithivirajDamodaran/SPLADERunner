@@ -153,9 +153,7 @@ class Expander:
             sorted_d = dict(sorted(d.items(), key=lambda item: item[1], reverse=True))
 
             # Construct SPLADE BoW representation for the current sentence
-            sparse_representation = [(self.reverse_voc[k], round(v, 2)) for k, v in sorted_d.items()]
-            
+            sparse_representation = {self.reverse_voc[k]: round(v, 2) for k, v in sorted_d.items()}
             sparse_representations.append(sparse_representation)
 
         return sparse_representations
-    
