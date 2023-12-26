@@ -48,7 +48,7 @@ from spladerunner import Expander
 exapander = Expander()
 
 #Sample Document expansion
-sparse_rep = expander.expand("Chronic Obstructive Pulmonary Disease (COPD) presents a complex interplay of respiratory and cardiovascular comorbidities, necessitating multidisciplinary management.")
+sparse_rep = expander.expand("The Manhattan Project and its atomic bomb helped bring an end to World War II. Its legacy of peaceful uses of atomic energy continues to have an impact on history and science.")
 ```
 
 
