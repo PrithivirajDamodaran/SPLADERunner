@@ -127,16 +127,35 @@ class Expander:
         outputs = self.session.run(None, onnx_input)
         outputs = outputs[0]
 
-        relu_log = np.log1p(np.maximum(outputs, 0)) 
-        weighted_log = relu_log * attention_mask[:, :, np.newaxis]
-        max_val = np.max(weighted_log, axis=1)
-        vector = np.squeeze(max_val)
-        cols = np.nonzero(vector)[0]
-        weights = vector[cols]
-        d = dict(zip(cols, weights))
-        sorted_d = dict(sorted(d.items(), key=lambda item: item[1], reverse=True))
-        sparse_reprsentation_dict = [(self.reverse_voc[k], round(v, 2)) for k, v in sorted_d.items()]
+        batch_size = outputs.shape[0]
+        sparse_representations = []
 
-        return sparse_reprsentation_dict
+        # Iterate over each example in the batch
+        for i in range(batch_size):
+            single_output = outputs[i]
+            single_attention_mask = attention_mask[i]
+
+            # Apply ReLU log
+            relu_log = np.log1p(np.maximum(single_output, 0))
+
+            # Apply attention mask
+            weighted_log = relu_log * single_attention_mask[:, np.newaxis]
+
+            # Find max values
+            max_val = np.max(weighted_log, axis=0)
+            
+            # Find non-zero columns
+            cols = np.nonzero(max_val)[0]
+            weights = max_val[cols]
+
+            # Create dictionary and sort it
+            d = dict(zip(cols, weights))
+            sorted_d = dict(sorted(d.items(), key=lambda item: item[1], reverse=True))
+
+            # Construct SPLADE BoW representation for the current sentence
+            sparse_representation = [(self.reverse_voc[k], round(v, 2)) for k, v in sorted_d.items()]
+            
+            sparse_representations.append(sparse_representation)
+
+        return sparse_representations
     
-
