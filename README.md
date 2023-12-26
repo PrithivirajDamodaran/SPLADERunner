@@ -6,7 +6,7 @@ Ultra-lite &amp; Super-fast Python wrapper for the unofficial implementation of 
     - **No Torch or Transformers** needed. Runs on CPU.
     - Boasts the 
         - **tiniest document expander, ~8MB**.
-        - **Faster inference time**
+        - **Faster inference**
     
 2. 💡 **Why learn Sparse Representations?**:
 
