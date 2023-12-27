@@ -20,14 +20,14 @@ A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation
 
 Pros
 
-    - ✅ Efficient and Cheap.
-    - ✅ No need to fine-tune models.
-    - ✅️ Interpretable.
-    - ✅️ Exact Term Matches.
+    ✅ Efficient and Cheap.
+    ✅ No need to fine-tune models.
+    ✅️ Interpretable.
+    ✅️ Exact Term Matches.
 
 Cons
 
-    - ❌ Vocabulary mismatch (Need to remember exact terms)
+    ❌ Vocabulary mismatch (Need to remember exact terms)
 
 <br/>
 
@@ -35,16 +35,16 @@ Cons
 
 Pros
 
-    - ✅ Search how humans innately think.
-    - ✅ When finetuned beats sparse by long way.
-    - ✅ Easily works with Multiple modals.
+    ✅ Search how humans innately think.
+    ✅ When finetuned beats sparse by long way.
+    ✅ Easily works with Multiple modals.
 
 Cons
 
-    - ❌ Suffers **token amnesia** (misses term matching), 
-    - ❌ **Resource intensive** (both index & retreival), 
-    - ❌ Famously **hard to interpret**  
-    - ❌ Needs fine-tuning for OOD data.
+    ❌ Suffers **token amnesia** (misses term matching), 
+    ❌ **Resource intensive** (both index & retreival), 
+    ❌ Famously **hard to interpret**  
+    ❌ Needs fine-tuning for OOD data.
 
 <br/>
 
