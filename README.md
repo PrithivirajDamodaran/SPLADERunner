@@ -16,15 +16,15 @@ A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation
     
 2. 💡 **Why learn Sparse Representations?**
 
-- Lexical search with BOW models are strong baselines, but they famously suffer from **vocabulary mismatch** problem,as they can only do exact term matching. BoW representations are calculated and not learned.
+- **Lexical search** based on BOW models are strong baselines, but they famously suffer from **vocabulary mismatch** problem, as they can only do exact term matching. *(BoW representations are calculated and not learned.)*
 
-- Learned (neural) rankers / Dense retrievers with approximate nearest neighbors search has shown impressive results but they can 
+- ***Semantic Search** Learned Neural /  Dense retrievers with approximate nearest neighbors search has shown impressive results but they can 
     - Suffer from **token amnesia** (sometimes misses simple term matching), 
     - Can be **resource intensive** (both for storage and retreival), 
     - Are famously **not interpretable** and 
     - Scaling to newer domains needs data/finetuning.
 
-- Best of both worlds made sense and gave rise to interest in **learning sparse representations** for queries and documents with some interpretability. The sparse representations also double as implicit or explicit (latent, contextualized) expansion mechanisms for both query and documents.
+- Best of both worlds made sense, hence gave rise to interest in **learning sparse representations** for queries and documents with some interpretability. The sparse representations also double as implicit or explicit (latent, contextualized) expansion mechanisms for both query and documents. If you are new to [query expansion learn more here from Daniel Tunkelang.](https://queryunderstanding.com/query-expansion-2d68d47cf9c8)
 
 
 3. **What the Models learn?**
