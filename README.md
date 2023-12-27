@@ -6,7 +6,7 @@
 
 ## What is it?
 
-A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation of SPLADEv2 (SParse Lexical And Expanion) models](https://github.com/PrithivirajDamodaran/SPLADEv2) for your search & retrieval pipelines. Implementation is based on SPLADEv2 paper: https://arxiv.org/abs/2109.10086 with some minor tweaks.
+A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation of SPLADEv2 (SParse Lexical And Expanion) models](https://huggingface.co/prithivida/Tiny-SPLADE-Doc) for your search & retrieval pipelines. Implementation is based on SPLADEv2 paper: https://arxiv.org/abs/2109.10086 with some minor tweaks.
 
 1. ⚡ **Ultra-lite & Superfast**: 
     - **No Torch or Transformers** needed. Runs on CPU.
