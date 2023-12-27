@@ -67,4 +67,5 @@ sparse_rep = expander.expand("The Manhattan Project and its atomic bomb helped b
 
 - [Wacky Weights in Learned Sparse Representations and the Revenge of Score-at-a-Time Query Evaluation](https://arxiv.org/pdf/2110.11540.pdf)
 
-- [Query2doc: Query Expansion with Large Language Models] https://arxiv.org/pdf/2303.07678.pdf (don't mistake this for docT5query, this is a recent work)
+- [Query2doc: Query Expansion with Large Language Models](https://arxiv.org/pdf/2303.07678.pdf) 
+*note: don't mistake this for docT5query, this is a recent work*
