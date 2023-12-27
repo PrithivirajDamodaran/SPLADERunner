@@ -60,4 +60,5 @@ sparse_rep = expander.expand("The Manhattan Project and its atomic bomb helped b
 - [TBD]
 
 6. **Criticism and downsides of SPLADE and Learned Sparse representations:**
-[Wacky Weights in Learned Sparse Representations and the Revenge of Score-at-a-Time Query Evaluation](https://arxiv.org/pdf/2110.11540.pdf)
+
+- [Wacky Weights in Learned Sparse Representations and the Revenge of Score-at-a-Time Query Evaluation](https://arxiv.org/pdf/2110.11540.pdf)
