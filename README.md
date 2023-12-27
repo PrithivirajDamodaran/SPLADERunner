@@ -18,29 +18,33 @@ A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation
 
 - **Lexical search** with BOW based sparse vectors are strong baselines, but they famously suffer from **vocabulary mismatch** problem, as they can only do exact term matching. 
 
-- ✅ Efficient and Cheap.
-- ✅ No need to fine-tune models.
-- ✅️ Interpretable.
-- ✅️ Exact Term Matches.
+Pros
 
-<br/>
+    - ✅ Efficient and Cheap.
+    - ✅ No need to fine-tune models.
+    - ✅️ Interpretable.
+    - ✅️ Exact Term Matches.
 
-- ❌ Vocabulary mismatch (Need to remember exact terms)
+Cons
+
+    - ❌ Vocabulary mismatch (Need to remember exact terms)
 
 <br/>
 
 - ***Semantic Search** Learned Neural /  Dense retrievers with approximate nearest neighbors search has shown impressive results but they can 
 
-- ✅ Search how humans innately think.
-- ✅ When finetuned beats sparse by long way.
-- ✅ Easily works with Multiple modals.
+Pros
 
-<br/>
+    - ✅ Search how humans innately think.
+    - ✅ When finetuned beats sparse by long way.
+    - ✅ Easily works with Multiple modals.
 
-- ❌ Suffers **token amnesia** (misses simple term matching), 
-- ❌ **Resource intensive** (both index & retreival), 
-- ❌ Famously **hard to interpret**  
-- ❌ Needs fine-tuning for OOD data.
+Cons
+
+    - ❌ Suffers **token amnesia** (misses term matching), 
+    - ❌ **Resource intensive** (both index & retreival), 
+    - ❌ Famously **hard to interpret**  
+    - ❌ Needs fine-tuning for OOD data.
 
 <br/>
 
