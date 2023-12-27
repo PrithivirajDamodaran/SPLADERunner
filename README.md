@@ -14,17 +14,37 @@ A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation
         - **tiniest document expander, ~8MB**.
         - **Faster inference**
     
-2. 💡 **Why learn Sparse Representations?**
+2. 💡 **Why "learn" Sparse Representations?**
 
-- **Lexical search** based on BOW models are strong baselines, but they famously suffer from **vocabulary mismatch** problem, as they can only do exact term matching. *(BoW representations are calculated and not learned.)*
+- **Lexical search** with BOW based sparse vectors are strong baselines, but they famously suffer from **vocabulary mismatch** problem, as they can only do exact term matching. 
+
+- ✅ Efficient and Cheap.
+- ✅ No need to fine-tune models.
+- ✅️ Interpretable.
+- ✅️ Exact Term Matches.
+
+<br/>
+
+- ❌ Vocabulary mismatch (Need to remember exact terms)
+
+<br/>
 
 - ***Semantic Search** Learned Neural /  Dense retrievers with approximate nearest neighbors search has shown impressive results but they can 
-    - Suffer from **token amnesia** (sometimes misses simple term matching), 
-    - Can be **resource intensive** (both for storage and retreival), 
-    - Are famously **not interpretable** and 
-    - Scaling to newer domains needs data/finetuning.
 
-- Best of both worlds made sense, hence gave rise to interest in **learning sparse representations** for queries and documents with some interpretability. The sparse representations also double as implicit or explicit (latent, contextualized) expansion mechanisms for both query and documents. If you are new to [query expansion learn more here from Daniel Tunkelang.](https://queryunderstanding.com/query-expansion-2d68d47cf9c8)
+- ✅ Search how humans innately think.
+- ✅ When finetuned beats sparse by long way.
+- ✅ Easily works with Multiple modals.
+
+<br/>
+
+- ❌ Suffers **token amnesia** (misses simple term matching), 
+- ❌ **Resource intensive** (both index & retreival), 
+- ❌ Famously **hard to interpret**  
+- ❌ Needs fine-tuning for OOD data.
+
+<br/>
+
+- Getting pros of both searches made sense and that gave rise to interest in **learning sparse representations** for queries and documents with some interpretability. The sparse representations also double as implicit or explicit (latent, contextualized) expansion mechanisms for both query and documents. If you are new to [query expansion learn more here from Daniel Tunkelang.](https://queryunderstanding.com/query-expansion-2d68d47cf9c8)
 
 
 3. **What the Models learn?**
@@ -50,8 +70,7 @@ pip install spladerunner
 ```python
 #One-time init
 from spladerunner import Expander
-# Default model is the document expander.
-exapander = Expander()
+exapander = Expander() # Default is do expander model.
 
 #Sample Document expansion
 sparse_rep = expander.expand("The Manhattan Project and its atomic bomb helped bring an end to World War II. Its legacy of peaceful uses of atomic energy continues to have an impact on history and science.")
