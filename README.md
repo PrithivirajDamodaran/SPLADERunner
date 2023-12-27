@@ -1,6 +1,6 @@
 # SPLADERunner
 
-*Title is Dedicated to the Original Blade Runners - Harrison Ford and the Author  Philip K. Dick of "Do Androids Dream of Electric Sheep?"*
+*Title is dedicated to the Original Blade Runners - Harrison Ford and the Author  Philip K. Dick of "Do Androids Dream of Electric Sheep?"*
 
 *Thanks to [Nils Reimers](https://www.linkedin.com/in/reimersnils/) for the trolls :-) and for all the timely inputs especially around evaluation*
 
