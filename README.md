@@ -1,6 +1,9 @@
 # SPLADERunner
 
-*Title, Dedicated to the Original Blade Runners - Harrison Ford and the Author  Philip K. Dick of "Do Androids Dream of Electric Sheep?"*
+*Title is Dedicated to the Original Blade Runners - Harrison Ford and the Author  Philip K. Dick of "Do Androids Dream of Electric Sheep?"*
+
+*Thanks to [Nils Reimers](https://www.linkedin.com/in/reimersnils/) for the trolls :-) and for all the timely inputs especially around evaluation*
+
 
 Ultra-lite &amp; Super-fast Python wrapper for the unofficial implementation of SPLADEv2 (SParse Lexical And Expanion) models for your search & retrieval pipelines. Implementation is based on SPLADEv2 paper: https://arxiv.org/abs/2109.10086 with some minor tweaks.
 
