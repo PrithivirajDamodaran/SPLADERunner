@@ -31,7 +31,7 @@ Cons
 
 <br/>
 
-- ***Semantic Search** Learned Neural /  Dense retrievers with approximate nearest neighbors search has shown impressive results but they can 
+- **Semantic Search** Learned Neural /  Dense retrievers with approximate nearest neighbors search has shown impressive results but they can 
 
 Pros
 
@@ -41,9 +41,9 @@ Pros
 
 Cons
 
-    ❌ Suffers **token amnesia** (misses term matching), 
-    ❌ **Resource intensive** (both index & retreival), 
-    ❌ Famously **hard to interpret**  
+    ❌ Suffers token amnesia (misses term matching), 
+    ❌ Resource intensive (both index & retreival), 
+    ❌ Famously hard to interpret.
     ❌ Needs fine-tuning for OOD data.
 
 <br/>
