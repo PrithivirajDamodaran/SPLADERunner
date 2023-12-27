@@ -1,5 +1,7 @@
 # SPLADERunner
 
+*Title, Dedicated to the Original Blade Runners - Harrison Ford and the Author  Philip K. Dick of "Do Androids Dream of Electric Sheep?"*
+
 Ultra-lite &amp; Super-fast Python wrapper for the unofficial implementation of SPLADEv2 (SParse Lexical And Expanion) models for your search & retrieval pipelines. Implementation is based on SPLADEv2 paper: https://arxiv.org/abs/2109.10086 with some minor tweaks.
 
 1. ⚡ **Ultra-lite & Superfast**: 
@@ -8,12 +10,12 @@ Ultra-lite &amp; Super-fast Python wrapper for the unofficial implementation of 
         - **tiniest document expander, ~8MB**.
         - **Faster inference**
     
-2. 💡 **Why learn Sparse Representations?**:
+2. 💡 **Why learn Sparse Representations?**
 
 - Lexical search with BOW models are strong baselines, but they famously suffer from **vocabulary mismatch** problem,as they can only do exact term matching. BoW representations are calculated and not learned.
 
 - Learned (neural) rankers / Dense retrievers with approximate nearest neighbors search has shown impressive results but they can 
-    - Suffer from **token amnesia** (sometimes miss simple term matching), 
+    - Suffer from **token amnesia** (sometimes misses simple term matching), 
     - Can be **resource intensive** (both for storage and retreival), 
     - Are famously **not interpretable** and 
     - Scaling to newer domains needs data/finetuning.
@@ -21,7 +23,7 @@ Ultra-lite &amp; Super-fast Python wrapper for the unofficial implementation of 
 - Best of both worlds made sense and gave rise to interest in **learning sparse representations** for queries and documents with some interpretability. The sparse representations also double as implicit or explicit (latent, contextualized) expansion mechanisms for both query and documents.
 
 
-3. **What the Models learn?**:
+3. **What the Models learn?**
 - The model learns to project it's learned dense representations over a MLM head to give a vocabulary distribution.
 - <center><img src="./images/vocproj.png" width=300/></center>
 
@@ -51,6 +53,11 @@ exapander = Expander()
 sparse_rep = expander.expand("The Manhattan Project and its atomic bomb helped bring an end to World War II. Its legacy of peaceful uses of atomic energy continues to have an impact on history and science.")
 ```
 
-
-4. 💸 **Where and How can you use?**:
+4. 💸 **Where and How can you use?**
 - [TBD]
+
+5. **How (and what) to contribute?**
+- [TBD]
+
+6. **Criticism and downsides of SPLADE and Learned Sparse representations:**
+[Wacky Weights in Learned Sparse Representations and the Revenge of Score-at-a-Time Query Evaluation](https://arxiv.org/pdf/2110.11540.pdf)
