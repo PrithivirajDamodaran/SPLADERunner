@@ -74,7 +74,7 @@ pip install spladerunner
 ```python
 #One-time init
 from spladerunner import Expander
-exapander = Expander() # Default is do expander model.
+expander = Expander() # Default is do expander model.
 
 #Sample Document expansion
 sparse_rep = expander.expand("The Manhattan Project and its atomic bomb helped bring an end to World War II. Its legacy of peaceful uses of atomic energy continues to have an impact on history and science.")
