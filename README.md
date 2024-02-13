@@ -2,12 +2,11 @@
 
 *Title is dedicated to the Original Blade Runners - Harrison Ford and the Author  Philip K. Dick of "Do Androids Dream of Electric Sheep?"*
 
-*Thanks to [Nils Reimers](https://www.linkedin.com/in/reimersnils/) for 
-
+*Thanks to [Nils Reimers](https://www.linkedin.com/in/reimersnils/) for*
 - All the MS-MARCO hard negatives.
 - All his work in IR space, Pushing BEIR and MTEB benchmarks.
 - The trolls :-) and
-- For all the timely inputs especially around evaluation.*
+- For all the timely inputs especially around evaluation.
 
 ## What is it?
 
