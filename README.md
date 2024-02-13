@@ -2,11 +2,16 @@
 
 *Title is dedicated to the Original Blade Runners - Harrison Ford and the Author  Philip K. Dick of "Do Androids Dream of Electric Sheep?"*
 
-*Thanks to [Nils Reimers](https://www.linkedin.com/in/reimersnils/) for the trolls :-) and for all the timely inputs especially around evaluation*
+*Thanks to [Nils Reimers](https://www.linkedin.com/in/reimersnils/) for 
+
+- All the MS-MARCO hard negatives.
+- All his work in IR space, Pushing BEIR and MTEB benchmarks.
+- The trolls :-) and
+- For all the timely inputs especially around evaluation.*
 
 ## What is it?
 
-A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation of SPLADEv2 (SParse Lexical And Expanion) models](https://huggingface.co/prithivida/Tiny-SPLADE-Doc) for your search & retrieval pipelines. Implementation is based on SPLADEv2 paper: https://arxiv.org/abs/2109.10086 with some minor tweaks.
+A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation of SPLADEPlusPlus (SParse Lexical And Expanion) models](https://abc.com) for your search & retrieval pipelines. Implementation is based on the papers "From Distillation to Hard Negative Sampling: Making Sparse Neural IR Models More Effective":https://arxiv.org/pdf/2205.04733.pdf  and "SPLADEv2": https://arxiv.org/abs/2109.10086 with some minor tweaks.
 
 1. ⚡ **Ultra-lite & Superfast**: 
     - **No Torch or Transformers** needed. Runs on CPU.
@@ -14,7 +19,9 @@ A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation
         - **tiniest document expander, ~8MB**.
         - **Faster inference**
     
-2. 💡 **Why "learn" Sparse Representations?**
+## Why Sparse Representations? 
+
+(Feel free to skip to 3 If you are expert in sparse and dense representations)
 
 - **Lexical search** with BOW based sparse vectors are strong baselines, but they famously suffer from **vocabulary mismatch** problem, as they can only do exact term matching. 
 
@@ -51,16 +58,16 @@ Cons
 - Getting pros of both searches made sense and that gave rise to interest in **learning sparse representations** for queries and documents with some interpretability. The sparse representations also double as implicit or explicit (latent, contextualized) expansion mechanisms for both query and documents. If you are new to [query expansion learn more here from Daniel Tunkelang.](https://queryunderstanding.com/query-expansion-2d68d47cf9c8)
 
 
-3. **What the Models learn?**
+2b. **What the Models learn?**
 - The model learns to project it's learned dense representations over a MLM head to give a vocabulary distribution.
 - <center><img src="./images/vocproj.png" width=300/></center>
 
-4. 💸 **Why SPLADERunner?**:
+## 3. 💸 **Why SPLADERunner?**:
     - **$ Concious:** Serverless deployments like Lambda are charged by memory & time per invocation*
     - **Smaller package size** = shorter cold start times, quicker re-deployments for Serverless.
     - **Permissive License**. (You can use it commercially with Source attribution).
 
-5. 🎯 **Models**:
+## 4. 🎯 **Models**:
     - Below are the list of models supported as of now.
         * [prithivida/Tiny-SPLADE-Doc](https://huggingface.co/prithivida/Tiny-SPLADE-Doc) (default model)
         * [prithivida/Tiny-SPLADE-Query](https://huggingface.co/prithivida/Tiny-SPLADE-Query) (Coming soon)
