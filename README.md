@@ -8,16 +8,37 @@
 - The trolls :-) and
 - For all the timely inputs especially around evaluation.
 
+*Thanks to Naver folks, the original authors of the paper for such a robust research.*
+
 ## What is it?
 
-A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation of SPLADEPlusPlus (SParse Lexical And Expanion) models](https://abc.com) for your search & retrieval pipelines. Implementation is based on the papers "From Distillation to Hard Negative Sampling: Making Sparse Neural IR Models More Effective":https://arxiv.org/pdf/2205.04733.pdf  and "SPLADEv2": https://arxiv.org/abs/2109.10086 with some minor tweaks.
+A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation of SPLADEPlusPlus models](https://abc.com) for your search & retrieval pipelines. Based on the papers "From Distillation to Hard Negative Sampling: Making Sparse Neural IR Models More Effective":https://arxiv.org/pdf/2205.04733.pdf and "SPLADEv2": https://arxiv.org/abs/2109.10086 with some minor tweaks.
 
 1. ⚡ **Ultra-lite & Superfast**: 
     - **No Torch or Transformers** needed. Runs on CPU.
-    - Boasts the 
-        - **tiniest document expander, ~8MB**.
-        - **Faster inference**
-    
+    - **Retrieval Efficient**: Token budget concious models, hence low latency retrievals. Anserini numbers.
+    - **Inference / Serving Efficient**: Optimised for best inference performance.
+
+2. Note on Retrieval Efficieny and Industry suitability.
+   Goal was not to be the SoTA model, but to be competitive yet efficient. Show the Token budget difference.
+   FLOPS
+   
+   
+## 🚀 Installation:
+```python 
+pip install spladerunner
+```
+
+## Usage:
+```python
+#One-time init
+from spladerunner import Expander
+expander = Expander() # Default is do expander model.
+
+#Sample Document expansion
+sparse_rep = expander.expand("The Manhattan Project and its atomic bomb helped bring an end to World War II. Its legacy of peaceful uses of atomic energy continues to have an impact on history and science.")
+```
+
 ## Why Sparse Representations? 
 
 (Feel free to skip to 3 If you are expert in sparse and dense representations)
@@ -68,23 +89,7 @@ Cons
 
 ## 4. 🎯 **Models**:
     - Below are the list of models supported as of now.
-        * [prithivida/Tiny-SPLADE-Doc](https://huggingface.co/prithivida/Tiny-SPLADE-Doc) (default model)
-        * [prithivida/Tiny-SPLADE-Query](https://huggingface.co/prithivida/Tiny-SPLADE-Query) (Coming soon)
-
-## 🚀 Installation:
-```python 
-pip install spladerunner
-```
-
-## Usage:
-```python
-#One-time init
-from spladerunner import Expander
-expander = Expander() # Default is do expander model.
-
-#Sample Document expansion
-sparse_rep = expander.expand("The Manhattan Project and its atomic bomb helped bring an end to World War II. Its legacy of peaceful uses of atomic energy continues to have an impact on history and science.")
-```
+        * [DOST/SPLADEplusplus_EN](https://huggingface.co/DOST/SPLADEplusplus_EN) (default model)
 
 4. 💸 **Where and How can you use?**
 - [TBD]
