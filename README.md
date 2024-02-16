@@ -2,17 +2,17 @@
 
 ## 1. What is it?
 
-*Title is dedicated to the Original Blade Runners - Harrison Ford and the Author  Philip K. Dick of "Do Androids Dream of Electric Sheep?"*
+>Title is dedicated to the Original Blade Runners - Harrison Ford and the Author  Philip K. Dick of "Do Androids Dream of Electric Sheep?"
 
-A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation of SPLADE++ models](https://huggingface.co/prithivida/Splade_PP_en_v1) for your search & retrieval pipelines. Based on the papers Naver's "From Distillation to Hard Negative Sampling: Making Sparse Neural IR Models More Effective":https://arxiv.org/pdf/2205.04733.pdf and "Gooogle's SparseEmbed": https://arxiv.org/abs/2109.10086.
+A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation of SPLADE++ models](https://huggingface.co/prithivida/Splade_PP_en_v1) for your search & retrieval pipelines. Based on the papers Naver's [From Distillation to Hard Negative Sampling: Making Sparse Neural IR Models More Effective](https://arxiv.org/pdf/2205.04733.pdf) and Google's [SparseEmbed](https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/79f16d3b3b948706d191a7fe6dd02abe516f5564.pdf6)
 
-- ⚡ **Ultra-lite & Superfast**: 
-    - **No Torch or Transformers** needed. Runs on CPU.
-    - **Inference / Serving Efficient**: Optimised inference performance.
+- ⚡ **Lite weight**: 
+    - **No Torch or Transformers** needed. - **Runs on CPU** for query or passage expansion.
     - **FLOPS & Retrieval Efficient**: Refer model card for details.
 
    
 ## 🚀 Installation:
+
 ```python 
 pip install spladerunner
 ```
@@ -33,7 +33,6 @@ print(sparse_rep)
 (Feel free to skip to 3 If you are expert in sparse and dense representations)
 
 ## Why Sparse Representations? 
-
 
     
 - **Lexical search** with BOW based sparse vectors are strong baselines, but they famously suffer from **vocabulary mismatch** problem, as they can only do exact term matching. 
