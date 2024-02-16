@@ -15,7 +15,9 @@ class Expander:
 
     def __init__(self, 
                  model_name = DEFAULT_MODEL, 
-                 cache_dir= DEFAULT_CACHE_DIR):
+                 max_length=512,
+                 cache_dir= DEFAULT_CACHE_DIR
+                 ):
 
         self.cache_dir = Path(cache_dir)
         
@@ -32,7 +34,7 @@ class Expander:
         model_file = MODEL_FILE_MAP[model_name]
         
         self.session = ort.InferenceSession(self.cache_dir / model_name / model_file)
-        self.tokenizer = self._get_tokenizer()
+        self.tokenizer = self._get_tokenizer(max_length)
         self.reverse_voc = {v: k for k, v in self.tokenizer.get_vocab().items()}
 
     def _download_model_files(self, model_name):
@@ -74,7 +76,7 @@ class Expander:
         return vocab
         
 
-    def _get_tokenizer(self, max_length = 512):
+    def _get_tokenizer(self, max_length):
       
         config_path = self.model_dir / "config.json"
         tokenizer_path = self.model_dir / "tokenizer.json"
@@ -100,10 +102,10 @@ class Expander:
             elif isinstance(token, dict):
                 tokenizer.add_special_tokens([AddedToken(**token)])
 
-        vocab_file = self.model_dir / "vocab.txt"
-        if vocab_file.exists():
-            tokenizer.vocab = self._load_vocab(vocab_file)
-            tokenizer.ids_to_tokens = collections.OrderedDict([(ids, tok) for tok, ids in tokenizer.vocab.items()])                
+        # vocab_file = self.model_dir / "vocab.txt"
+        # if vocab_file.exists():
+        #     tokenizer.vocab = self._load_vocab(vocab_file)
+        #     tokenizer.ids_to_tokens = collections.OrderedDict([(ids, tok) for tok, ids in tokenizer.vocab.items()])                
 
         return tokenizer
     
@@ -117,12 +119,15 @@ class Expander:
 
         encoded_input = self.tokenizer.encode_batch(plain_input)
         input_ids = np.array([e.ids for e in encoded_input])
+        token_type_ids = np.array([e.type_ids for e in encoded_input])
         attention_mask = np.array([e.attention_mask for e in encoded_input])
 
         onnx_input = {
             "input_ids": np.array(input_ids, dtype=np.int64),
-            "attention_mask": np.array(attention_mask, dtype=np.int64)
+            "input_mask": np.array(attention_mask, dtype=np.int64),
+            "segment_ids": np.array(token_type_ids, dtype=np.int64),
         }
+
 
         outputs = self.session.run(None, onnx_input)
         outputs = outputs[0]
