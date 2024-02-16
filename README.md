@@ -7,7 +7,8 @@
 A Ultra-lite &amp; Super-fast Python wrapper for the [independent implementation of SPLADE++ models](https://huggingface.co/prithivida/Splade_PP_en_v1) for your search & retrieval pipelines. Based on the papers Naver's [From Distillation to Hard Negative Sampling: Making Sparse Neural IR Models More Effective](https://arxiv.org/pdf/2205.04733.pdf) and Google's [SparseEmbed](https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/79f16d3b3b948706d191a7fe6dd02abe516f5564.pdf6)
 
 - ⚡ **Lite weight**: 
-    - **No Torch or Transformers** needed. - **Runs on CPU** for query or passage expansion.
+    - **No Torch or Transformers** needed.
+    - **Runs on CPU** for query or passage expansion.
     - **FLOPS & Retrieval Efficient**: Refer model card for details.
 
    
@@ -32,7 +33,7 @@ print(sparse_rep)
 
 (Feel free to skip to 3 If you are expert in sparse and dense representations)
 
-## Why Sparse Representations? 
+## 2. Why Sparse Representations? 
 
     
 - **Lexical search** with BOW based sparse vectors are strong baselines, but they famously suffer from **vocabulary mismatch** problem, as they can only do exact term matching. 
@@ -76,7 +77,7 @@ Cons
 
 
 
-2b. **What the Models learn?**
+2a. **What the Models learn?**
 - The model learns to project it's learned dense representations over a MLM head to give a vocabulary distribution.
   <center><img src="./images/vocproj.png" width=300/></center>
 
@@ -88,13 +89,13 @@ Cons
 - Below are the list of models supported as of now.
     * [`prithivida/Splade_PP_en_v1`](https://huggingface.co/prithivida/Splade_PP_en_v1) (default model)
 
-4. 💸 **Where and How can you use?**
+4a. 💸 **Where and How can you use?**
 - [TBD]
 
-5. **How (and what) to contribute?**
+4b. **How (and what) to contribute?**
 - [TBD]
 
-6. **Criticisms and Competitions to SPLADE and Learned Sparse representations:**
+## 5. **Criticisms and Competitions to SPLADE and Learned Sparse representations:**
 
 - [Wacky Weights in Learned Sparse Representations and the Revenge of Score-at-a-Time Query Evaluation](https://arxiv.org/pdf/2110.11540.pdf)
 - [Query2doc: Query Expansion with Large Language Models](https://arxiv.org/pdf/2303.07678.pdf) 
