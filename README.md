@@ -103,7 +103,6 @@ Cons
 
 
 - *Thanks to [Nils Reimers](https://www.linkedin.com/in/reimersnils/) for*
-    - All the MS-MARCO hard negatives.
     - The trolls :-) and timely inputs around evaluation.
 - *Props to Naver folks, the original authors of the paper for such a robust research.*
 
