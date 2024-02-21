@@ -2,11 +2,11 @@ from setuptools import setup, find_packages
 
 setup(
     name='SPLADERunner', 
-    version='0.0.7', 
+    version='0.1.0', 
     packages=find_packages(),
     install_requires=[
         'tokenizers',
-        'onnxruntime',
+        'onnxruntime-gpu',
         'numpy',
         'requests',
         'tqdm'
