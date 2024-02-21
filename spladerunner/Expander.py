@@ -35,7 +35,7 @@ class Expander:
         
         self.session = ort.InferenceSession(self.cache_dir / model_name / model_file)
         self.tokenizer = self._get_tokenizer(max_length)
-        self.reverse_voc = {v: k for k, v in self.tokenizer.get_vocab().items()}
+        # self.reverse_voc = {v: k for k, v in self.tokenizer.get_vocab().items()}
 
     def _download_model_files(self, model_name):
         
@@ -154,11 +154,13 @@ class Expander:
             weights = max_val[cols]
 
             # Create dictionary and sort it
-            d = dict(zip(cols, weights))
-            sorted_d = dict(sorted(d.items(), key=lambda item: item[1], reverse=True))
+            # d = dict(zip(cols, weights))
+            # sorted_d = dict(sorted(d.items(), key=lambda item: item[1], reverse=True))
 
-            # Construct SPLADE BoW representation for the current sentence
-            sparse_representation = {self.reverse_voc[k]: round(v, 2) for k, v in sorted_d.items()}
-            sparse_representations.append(sparse_representation)
+            # # Construct SPLADE BoW representation for the current sentence
+            # sparse_representation = {self.reverse_voc[k]: round(v, 2) for k, v in sorted_d.items()}
+            # sparse_representations.append(sparse_representation)
+
+            sparse_representations.append({"indices":cols, "values": weights})
 
         return sparse_representations
