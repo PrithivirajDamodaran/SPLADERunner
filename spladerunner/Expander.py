@@ -150,8 +150,8 @@ class Expander:
             max_val = np.max(weighted_log, axis=0)
             
             # Find non-zero columns
-            cols = np.nonzero(max_val)[0]
-            weights = max_val[cols]
+            cols = np.nonzero(max_val)[0].tolist()
+            weights = max_val[cols].tolist()
 
             # Create dictionary and sort it
             # d = dict(zip(cols, weights))
