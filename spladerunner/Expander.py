@@ -123,58 +123,61 @@ class Expander:
 
         return tokenizer
     
-    
     def expand(self, request):
-
+        
         if isinstance(request, str):
             plain_input = [request]
         else:
             plain_input = request
 
         encoded_input = self.tokenizer.encode_batch(plain_input)
-        input_ids = np.array([e.ids for e in encoded_input])
-        token_type_ids = np.array([e.type_ids for e in encoded_input])
-        attention_mask = np.array([e.attention_mask for e in encoded_input])
+        input_ids = np.array([e.ids for e in encoded_input], dtype=np.int64)
+        token_type_ids = np.array([e.type_ids for e in encoded_input], dtype=np.int64)
+        attention_mask = np.array([e.attention_mask for e in encoded_input], dtype=np.int64)
 
         onnx_input = {
-            "input_ids": np.array(input_ids, dtype=np.int64),
-            "input_mask": np.array(attention_mask, dtype=np.int64),
-            "segment_ids": np.array(token_type_ids, dtype=np.int64),
+            "input_ids": input_ids,
+            "input_mask": attention_mask,
+            "segment_ids": token_type_ids,
         }
 
+        outputs = self.session.run(None, onnx_input)[0]
 
-        outputs = self.session.run(None, onnx_input)
-        outputs = outputs[0]
+        # Apply ReLU log
+        relu_log = np.log1p(np.maximum(outputs, 0))
 
-        batch_size = outputs.shape[0]
+        # Apply attention mask
+        weighted_log = relu_log * attention_mask[:, :, np.newaxis]
+
+        # Initialize the list for sparse representations
         sparse_representations = []
 
         # Iterate over each example in the batch
-        for i in range(batch_size):
-            single_output = outputs[i]
-            single_attention_mask = attention_mask[i]
+        for i in range(outputs.shape[0]):
+            single_weighted_log = weighted_log[i]
 
-            # Apply ReLU log
-            relu_log = np.log1p(np.maximum(single_output, 0))
+            # Find max values for the current example
+            max_val = np.max(single_weighted_log, axis=0)
 
-            # Apply attention mask
-            weighted_log = relu_log * single_attention_mask[:, np.newaxis]
+            # Find non-zero columns for the current example
+            example_cols = np.nonzero(max_val)[0]
+            weights = max_val[example_cols].tolist()
 
-            # Find max values
-            max_val = np.max(weighted_log, axis=0)
-            
-            # Find non-zero columns
-            cols = np.nonzero(max_val)[0].tolist()
-            weights = max_val[cols].tolist()
+            sparse_representations.append({"indices": example_cols.tolist(), "values": weights})
 
-            # Create dictionary and sort it
-            # d = dict(zip(cols, weights))
-            # sorted_d = dict(sorted(d.items(), key=lambda item: item[1], reverse=True))
+        # Create dictionary and sort it
+        # d = dict(zip(cols, weights))
+        # sorted_d = dict(sorted(d.items(), key=lambda item: item[1], reverse=True))
 
-            # # Construct SPLADE BoW representation for the current sentence
-            # sparse_representation = {self.reverse_voc[k]: round(v, 2) for k, v in sorted_d.items()}
-            # sparse_representations.append(sparse_representation)
-
-            sparse_representations.append({"indices":cols, "values": weights})
+        # # Construct SPLADE BoW representation for the current sentence
+        # sparse_representation = {self.reverse_voc[k]: round(v, 2) for k, v in sorted_d.items()}
+        # sparse_representations.append(sparse_representation)
 
         return sparse_representations
+
+    
+            
+
+            
+
+        
