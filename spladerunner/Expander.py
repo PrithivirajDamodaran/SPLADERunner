@@ -15,7 +15,7 @@ class Expander:
 
     def __init__(self, 
                  model_name = DEFAULT_MODEL, 
-                 max_length=512,
+                 max_length=64,
                  use_gpu = False,
                  cache_dir= DEFAULT_CACHE_DIR
                  ):
@@ -37,13 +37,14 @@ class Expander:
         
         sess_options = ort.SessionOptions()
         sess_options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
-        
-        if use_gpu and ort.get_device() == 'GPU':
-            providers = ['CUDAExecutionProvider']
+
+        if use_gpu:
+           self.session = ort.InferenceSession(self.cache_dir / model_name / model_file, providers=['CUDAExecutionProvider'])
         else:
-            providers = ['CPUExecutionProvider']
-        
-        self.session = ort.InferenceSession(self.cache_dir / model_name / model_file, sess_options, providers=providers)
+          self.session = ort.InferenceSession(self.cache_dir / model_name / model_file, providers=['CPUExecutionProvider'])
+          
+        providers = self.session.get_providers()
+        print(f"Using {providers[0]}")
         self.tokenizer = self._get_tokenizer(max_length)
 
         # self.session = ort.InferenceSession(self.cache_dir / model_name / model_file)
