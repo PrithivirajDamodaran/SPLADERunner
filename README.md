@@ -27,6 +27,11 @@ expander = Expander('Splade_PP_en_v1', 128) #pass model, max_seq_len
 
 # Sample passage expansion
 sparse_rep = expander.expand("The Manhattan Project and its atomic bomb helped bring an end to World War II. Its legacy of peaceful uses of atomic energy continues to have an impact on history and science.")
+
+
+# For solr or elastic or vanilla lucene stores.
+sparse_rep = expander.expand("The Manhattan Project and its atomic bomb helped bring an end to World War II. Its legacy of peaceful uses of atomic energy continues to have an impact on history and science.", outformat="lucene")
+
 print(sparse_rep)
 
 ```

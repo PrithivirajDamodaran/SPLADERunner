@@ -49,7 +49,7 @@ class Expander:
 
         # self.session = ort.InferenceSession(self.cache_dir / model_name / model_file)
         # self.tokenizer = self._get_tokenizer(max_length)
-        # self.reverse_voc = {v: k for k, v in self.tokenizer.get_vocab().items()}
+        self.reverse_voc = {v: k for k, v in self.tokenizer.get_vocab().items()}
 
     def _download_model_files(self, model_name):
         
@@ -123,7 +123,7 @@ class Expander:
 
         return tokenizer
     
-    def expand(self, request):
+    def expand(self, request, outformat="hybrid"):
         
         if isinstance(request, str):
             plain_input = [request]
@@ -163,15 +163,16 @@ class Expander:
             example_cols = np.nonzero(max_val)[0]
             weights = max_val[example_cols].tolist()
 
-            sparse_representations.append({"indices": example_cols.tolist(), "values": weights})
+            if outformat == "lucene":
+                # Create dictionary and sort it
+                d = dict(zip(example_cols, weights))
+                sorted_d = dict(sorted(d.items(), key=lambda item: item[1], reverse=True))
 
-        # Create dictionary and sort it
-        # d = dict(zip(cols, weights))
-        # sorted_d = dict(sorted(d.items(), key=lambda item: item[1], reverse=True))
-
-        # # Construct SPLADE BoW representation for the current sentence
-        # sparse_representation = {self.reverse_voc[k]: round(v, 2) for k, v in sorted_d.items()}
-        # sparse_representations.append(sparse_representation)
+                # Construct SPLADE BoW representation for the current sentence
+                sparse_representation = {self.reverse_voc[k]: round(v, 2) for k, v in sorted_d.items()}
+                sparse_representations.append(sparse_representation)
+            else:
+                sparse_representations.append({"indices": example_cols.tolist(), "values": weights})
 
         return sparse_representations
 
