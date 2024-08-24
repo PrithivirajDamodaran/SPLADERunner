@@ -16,7 +16,6 @@ class Expander:
     def __init__(self, 
                  model_name = DEFAULT_MODEL, 
                  max_length=64,
-                 use_gpu = False,
                  cache_dir= DEFAULT_CACHE_DIR
                  ):
 
@@ -34,21 +33,8 @@ class Expander:
             
         model_file = MODEL_FILE_MAP[model_name]
 
-        
-        sess_options = ort.SessionOptions()
-        sess_options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
-
-        if use_gpu:
-           self.session = ort.InferenceSession(self.cache_dir / model_name / model_file, providers=['CUDAExecutionProvider'])
-        else:
-          self.session = ort.InferenceSession(self.cache_dir / model_name / model_file, providers=['CPUExecutionProvider'])
-          
-        providers = self.session.get_providers()
-        print(f"Using {providers[0]}")
+        self.session = ort.InferenceSession(self.cache_dir / model_name / model_file)
         self.tokenizer = self._get_tokenizer(max_length)
-
-        # self.session = ort.InferenceSession(self.cache_dir / model_name / model_file)
-        # self.tokenizer = self._get_tokenizer(max_length)
         self.reverse_voc = {v: k for k, v in self.tokenizer.get_vocab().items()}
 
     def _download_model_files(self, model_name):
